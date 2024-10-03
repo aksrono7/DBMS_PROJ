@@ -1,0 +1,192 @@
+
+
+
+index.html
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-container">
+        <h1>LOGIN</h1>
+        <form>
+            <div class="input-box">
+                <input type="text" id="username" placeholder="Username">
+            </div>
+            <div class="input-box">
+                <input type="password" id="password" placeholder="Password">
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="create_account.html" class="signup-link" target="_blank">Sign up</a></p>
+    </div>
+    <script src="script.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+style.css
+
+
+
+
+
+
+/* Body background styling */
+body {
+    background: linear-gradient(to right, #1e90ff, #ff6347); /* Blue to Red gradient */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Login container */
+.login-container {
+    background-color: #ff8c00; /* Orange box */
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+}
+
+/* Login header */
+h1 {
+    color: black;
+    font-weight: bold;
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+/* Input box styling */
+.input-box {
+    margin-bottom: 20px;
+}
+
+input {
+    width: 300px;
+    padding: 10px;
+    border-radius: 30px; /* Oval ends */
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 16px;
+    text-align: center;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+/* Placeholder styling */
+input::placeholder {
+    color: rgba(128, 128, 128, 0.8); /* Grey opaque text */
+}
+
+/* Button styling */
+button {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #333;
+}
+
+/* Sign-up text styling */
+p {
+    margin-top: 20px;
+    font-size: 14px;
+    color: black;
+}
+
+/* Sign-up link styling */
+.signup-link {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.signup-link:hover {
+    color: darkblue; /* Darkens on hover */
+}
+
+
+
+
+
+
+
+script.js
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.querySelector("form");
+    const usernameInput = document.getElementById("username");
+    const passwordInput = document.getElementById("password");
+
+    // Handling form submission
+    form.addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the form from submitting and refreshing the page
+
+        const username = usernameInput.value.trim();
+        const password = passwordInput.value.trim();
+
+        // Simple validation (you can add more complex logic here)
+        if (!username || !password) {
+            alert("Please fill in both username and password.");
+        } else {
+            // Simulating login (for now, just checking hardcoded credentials)
+            if (username === "admin" && password === "1234") {
+                alert("Login successful!");
+                // Redirect logic can go here if you want
+            } else {
+                alert("Invalid username or password.");
+            }
+        }
+    });
+
+    // Optional: You could also add input validation as user types, to show errors in real-time.
+    usernameInput.addEventListener("input", () => {
+        if (usernameInput.value.trim() === "") {
+            usernameInput.style.borderColor = "red"; // Show error
+        } else {
+            usernameInput.style.borderColor = "#ccc"; // Reset border color
+        }
+    });
+
+    passwordInput.addEventListener("input", () => {
+        if (passwordInput.value.trim() === "") {
+            passwordInput.style.borderColor = "red"; // Show error
+        } else {
+            passwordInput.style.borderColor = "#ccc"; // Reset border color
+        }
+    });
+});
+
+

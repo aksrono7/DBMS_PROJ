@@ -1,0 +1,186 @@
+
+
+
+
+
+create_account.html
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="account-container">
+        <h1>CREATE ACCOUNT</h1>
+        <form id="createAccountForm">
+            <div class="input-box">
+                <input type="text" id="username" placeholder="Username">
+            </div>
+            <div class="input-box">
+                <input type="password" id="password" placeholder="Password">
+            </div>
+            <div class="input-box">
+                <input type="password" id="confirmPassword" placeholder="Confirm Password">
+            </div>
+            <button type="submit" class="submit-button">Create Account</button>
+        </form>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+styles.css
+
+
+
+
+
+
+
+/* Body background styling */
+body {
+    background: linear-gradient(to right, violet, red, green); /* Mixed gradient */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Account container */
+.account-container {
+    background-color: #1e90ff; /* Blue box */
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+}
+
+/* Create Account header */
+h1 {
+    color: black;
+    font-weight: bold;
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+/* Input box styling */
+.input-box {
+    margin-bottom: 20px;
+}
+
+input {
+    width: 300px;
+    padding: 10px;
+    border-radius: 30px; /* Oval ends */
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 16px;
+    text-align: center;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+/* Placeholder styling */
+input::placeholder {
+    color: rgba(128, 128, 128, 0.8); /* Grey opaque text */
+}
+
+/* Button styling */
+.submit-button {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: darkgreen; /* Darkens on hover */
+}
+
+
+
+
+
+
+
+
+scripts.js
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById("createAccountForm");
+    const usernameInput = document.getElementById("username");
+    const passwordInput = document.getElementById("password");
+    const confirmPasswordInput = document.getElementById("confirmPassword");
+
+    // Handling form submission
+    form.addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the form from submitting and refreshing the page
+
+        const username = usernameInput.value.trim();
+        const password = passwordInput.value.trim();
+        const confirmPassword = confirmPasswordInput.value.trim();
+
+        // Simple validation
+        if (!username || !password || !confirmPassword) {
+            alert("Please fill in all fields.");
+        } else if (password !== confirmPassword) {
+            alert("Passwords do not match.");
+        } else {
+            alert("Account created successfully!"); // Simulating successful account creation
+            // Redirect logic can go here if you want
+        }
+    });
+
+    // Optional: Input validation as user types
+    usernameInput.addEventListener("input", () => {
+        if (usernameInput.value.trim() === "") {
+            usernameInput.style.borderColor = "red"; // Show error
+        } else {
+            usernameInput.style.borderColor = "#ccc"; // Reset border color
+        }
+    });
+
+    passwordInput.addEventListener("input", () => {
+        if (passwordInput.value.trim() === "") {
+            passwordInput.style.borderColor = "red"; // Show error
+        } else {
+            passwordInput.style.borderColor = "#ccc"; // Reset border color
+        }
+    });
+
+    confirmPasswordInput.addEventListener("input", () => {
+        if (confirmPasswordInput.value.trim() === "") {
+            confirmPasswordInput.style.borderColor = "red"; // Show error
+        } else {
+            confirmPasswordInput.style.borderColor = "#ccc"; // Reset border color
+        }
+    });
+});
